@@ -1,0 +1,31 @@
+{
+  "name": "Sprinklr to Elementool",
+  "version": "1.0",
+  "description": "Fills in fields of an Elementool ticket using data from Sprinklr",
+  "permissions": [
+    "storage",
+    "tabs",
+    "<all_urls>"
+  ],
+  "background": {
+  "scripts": ["background.js"],
+  "persistent": false
+  },
+  "manifest_version": 2,
+  "commands": {
+    "copyFromSprinklr": {
+      "suggested_key": {
+        "default": "Ctrl+Shift+C",
+        "mac": "Command+Shift+C"
+      },
+      "description": "Gather required data from Sprinklr"
+    },
+    "pasteToElementool": {
+      "suggested_key": {
+        "default": "Ctrl+Shift+V",
+        "mac": "Command+Shift+V"
+      },
+      "description": "Fill in multiple fields of an Elementool ticket"
+    }
+  }
+}
