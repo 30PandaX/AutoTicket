@@ -15,15 +15,15 @@
   "commands": {
     "copyFromSprinklr": {
       "suggested_key": {
-        "default": "Ctrl+Shift+C",
-        "mac": "Command+Shift+C"
+        "default": "Alt+C",
+        "mac": "Alt+C"
       },
       "description": "Gather required data from Sprinklr"
     },
     "pasteToElementool": {
       "suggested_key": {
-        "default": "Ctrl+Shift+V",
-        "mac": "Command+Shift+V"
+        "default": "Alt+V",
+        "mac": "Alt+V"
       },
       "description": "Fill in multiple fields of an Elementool ticket"
     }

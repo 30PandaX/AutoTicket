@@ -32,4 +32,22 @@ function autofill() {
 }
 
 
+function getFromStorage() {
+  //TODO: error handling
+
+  chrome.storage.local.get("SprinklrData", function(result) {
+    //alert(JSON.stringify(result));
+
+    console.log("retrieved message: "+result["SprinklrData"]);
+  });
+
+  //now that the data has been used, remove it from local storage
+  chrome.storage.local.remove(["SprinklrData"], function() {
+    console.log("deleted message");
+  });
+}
+
+
+getFromStorage();
+
 autofill();
