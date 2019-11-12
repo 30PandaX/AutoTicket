@@ -4,10 +4,9 @@ Reference: [Getting Started Guide]
 
 ### Set up
 
-1. [Download] and install Postman 
-2. Import Sprinklr API to Postman
-2.1 Go to https://api-docs.sprinklr.com/?version=latest
-2.2 Click "Run in Postman" on top right corner
+1. Download and install [Postman] 
+2. Go to [Sprinklr API Doc]
+3. Click "Run in Postman" on top right corner to import Sprinklr API to Postman
 
 ### Access Token Generation (Step 1/2)
 
@@ -16,7 +15,9 @@ Reference: [Getting Started Guide]
 https://api2.sprinklr.com/oauth/authorize?client_id=byt9mu7ugfau3qyarkc6mwzp&response_type=code&redirect_uri=https://www.sleepnumber.com/
 3. Login and give access
 4. You will be redirected to SleepNumber's site, the address will contain code we need for step 2.
-*Sample address: http&#8203;s://www.sleepnumber.com/?code=**5dca0e1a7990a174a97cdd72**&state=null*
+
+*Sample address: https://www.sleepnumber.com/?code=5dca0ea7990a74a97cd72&state=null*
+
 *This code will expire in 10 minutes.
 
 ### Access Token Generation (Step 2/2)
@@ -37,6 +38,7 @@ https://api2.sprinklr.com/oauth/authorize?client_id=byt9mu7ugfau3qyarkc6mwzp&res
 4. Click "Send" and you will get case data in JSON
 
 
-   [Download]: <https://www.getpostman.com/downloads/>
+   [Postman]: <https://www.getpostman.com/downloads/>
+   [Sprinklr API Doc]: <https://api-docs.sprinklr.com/?version=latest>
    [my account at Sprinklr developer website]: <https://developer.sprinklr.com/apps/mykeys>
    [Getting Started Guide]: <https://developer.sprinklr.com/docs/read/api_overview/Getting_Started>
