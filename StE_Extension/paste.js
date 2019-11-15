@@ -2,7 +2,10 @@
 
 function autofill() {
   //Date of Customer Post
-  //NOTE: might not be able to automate this. Elementool forces use of GUI to select date.
+  var dateOfCustomer = document.querySelector("#Left36");
+  dateOfCustomer.readOnly = false;
+  dateOfCustomer.value = "11/15/2019";
+  dateOfCustomer.readOnly = true;
 
   //Time of  Customer Post
   document.querySelector("#igtxtLeft37").value = "12:00";
