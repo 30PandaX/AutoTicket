@@ -28,7 +28,7 @@ function autofill() {
   document.querySelector("#Memo41").value = "000001";
 
   //Customer's Post
-  document.querySelector("#steps_to_reproduce").value = "Hello world";
+  //document.querySelector("#steps_to_reproduce").value = "Hello world";
 
   //Link to Interaction
   document.querySelector("#Right40").value = "https://www.sprinklr.com";
@@ -41,7 +41,12 @@ function getFromStorage() {
   chrome.storage.local.get("SprinklrData", function(result) {
     //alert(JSON.stringify(result));
 
-    console.log("retrieved message: "+result["SprinklrData"]);
+    //console.log("retrieved message: "+result["SprinklrData"].data[0].description);
+
+    let info = result["SprinklrData"].data[0];
+
+    //Customer's Post
+    document.querySelector("#steps_to_reproduce").value = info.description;
   });
 
   //now that the data has been used, remove it from local storage
