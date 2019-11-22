@@ -38,8 +38,10 @@ chrome.commands.onCommand.addListener(function(command) {
       //but first, make sure that the user is in an Elementool window
       //TODO: check for more specific path (rather than just sprinklr.com)?
       if(tab[0].url.includes("sprinklr.com")) {
-        //TODO: get the case number from the Sprinklr page rather than using hard-coded value
-        apiCall(69902);
+        let caseNoStartIndex = tab[0].url.indexOf("qId=NUM_") + 8;
+        let caseNoEndIndex = tab[0].url.indexOf("&qTyp") ;
+        let caseNo = parseInt(tab[0].url.substr(caseNoStartIndex, caseNoEndIndex));
+        apiCall(caseNo);
       } else {
         //TODO: Should we display an alert, or would it be better to not do anything?
         alert("This command (Alt+C) only works in Sprinklr");
