@@ -26,6 +26,14 @@ async function apiCall(caseNo) {
 
   //put the JSON into storage
   copyToStorage(info);
+  
+  //Fetch Profile by sntype and snUserId
+  let contactId = info.data[0].contact.id;
+  let snType = contactId.substr(0, contactId.indexOf("_"));
+  let snUserId = contactId.substr(contactId.indexOf("_")+1);
+  let responseProfile = await fetch('https://api2.sprinklr.com/api/v2/profile?snType='+snType+'&snUserId='+snUserId, config);
+  let infoProfile = await responseProfile.json();
+  alert(infoProfile.data.contact.fullName);
 };
 
 
