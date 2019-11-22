@@ -7,19 +7,26 @@ function autofill() {
   chrome.storage.local.get("SprinklrData", function(result) {
     let info = result["SprinklrData"].data[0];
 
-    //Date of Customer Post
-    var dateOfCustomer = document.querySelector("#Left36");
+    // Date of Customer Post
+    // format 11/15/2019
+    let date = new Date(info.createdTime);
+    let dateOfCustomer = document.querySelector("#Left36");
     dateOfCustomer.readOnly = false;
-    dateOfCustomer.value = "11/15/2019";
+    dateOfCustomer.value = date.toLocaleDateString();
     dateOfCustomer.readOnly = true;
 
-    //Time of  Customer Post
-    document.querySelector("#igtxtLeft37").value = "12:00";
-    //AM or PM
-    document.querySelector("#Left37_ampm").value = "PM";
+    // Time of Customer Post
+    // format 12:00
+    let time = date.toLocaleTimeString();
+    let secondColonIndex = time.indexOf(":", 4);
+    document.querySelector("#igtxtLeft37").value = time.substr(0, secondColonIndex);
+    // AM or PM
+    // format PM
+    let mIndex = time.indexOf("M");
+    document.querySelector("#Left37_ampm").value = time.substr(mIndex-1, mIndex);;
 
     //Tonality
-    document.querySelector("#Memo64").value = "Positive";
+    document.querySelector("#Memo64").value = info.workflow.customFields["5c3f7f66e4b00ecbb3523869"];
 
     //Social Media Channel
     document.querySelector("#Memo34").value = "Twitter";
