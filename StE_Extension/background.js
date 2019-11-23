@@ -1,13 +1,5 @@
 'use strict';
 
-function copyToStorage(info) {
-  //'info' is the JSON object that is to be placed in storage
-  //set key:value pair in local storage
-  chrome.storage.local.set({SprinklrData: info}, function() {
-    console.log("Stored JSON.");
-  });
-}
-
 async function apiCall(caseNo) {
   let key = 'byt9mu7ugfau3qyarkc6mwzp';
   let token = 'q8nCb2suOOoFrTh/gOpvdg1qhPNzPj6p3aVMMWE7y9BhMTA5ZDQxYTBhNDljNzIzMDk5NjlkYzYwMThjMTc2OQ==';
@@ -21,19 +13,25 @@ async function apiCall(caseNo) {
     }
   };
   //now we are ready to make the API call
-  let response = await fetch('https://api2.sprinklr.com/api/v2/case/case-numbers?case-number='+caseNo, config);
-  let info = await response.json();
+  //Fetch Case by Case Number
+  let responseCase = await fetch('https://api2.sprinklr.com/api/v2/case/case-numbers?case-number='+caseNo, config);
+  let infoCase = await responseCase.json();
 
-  //put the JSON into storage
-  copyToStorage(info);
-  
+  //'infoCase' is the JSON object that is to be placed in storage
+  //set key:value pair in local storage
+  chrome.storage.local.set({CaseData: infoCase}, function() {
+    console.log("Stored infoCase JSON.");
+  });
+
   //Fetch Profile by sntype and snUserId
-  let contactId = info.data[0].contact.id;
+  let contactId = infoCase.data[0].contact.id;
   let snType = contactId.substr(0, contactId.indexOf("_"));
   let snUserId = contactId.substr(contactId.indexOf("_")+1);
   let responseProfile = await fetch('https://api2.sprinklr.com/api/v2/profile?snType='+snType+'&snUserId='+snUserId, config);
   let infoProfile = await responseProfile.json();
-  alert(infoProfile.data.contact.fullName);
+  chrome.storage.local.set({ProfileData: infoProfile}, function() {
+    console.log("Stored ProfileData JSON.");
+  });
 };
 
 
@@ -47,7 +45,7 @@ chrome.commands.onCommand.addListener(function(command) {
       //TODO: check for more specific path (rather than just sprinklr.com)?
       if(tab[0].url.includes("sprinklr.com")) {
         let caseNoStartIndex = tab[0].url.indexOf("qId=NUM_") + 8;
-        let caseNoEndIndex = tab[0].url.indexOf("&qTyp") ;
+        let caseNoEndIndex = tab[0].url.indexOf("&", caseNoStartIndex) ;
         let caseNo = parseInt(tab[0].url.substr(caseNoStartIndex, caseNoEndIndex));
         apiCall(caseNo);
       } else {
