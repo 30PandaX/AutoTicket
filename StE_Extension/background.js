@@ -13,7 +13,7 @@ async function apiCall(msgID) {
     }
   };
   //now we are ready to make the API call
-  let msgResponse = await fetch('https://api2.sprinklr.com/api/v2/message?sourceType=ACCOUNT&message?id='+msgID, config);
+  let msgResponse = await fetch('https://api2.sprinklr.com/api/v2/message?sourceType=ACCOUNT&id='+msgID, config);
   let msgInfo = await msgResponse.json();
 
   console.log(msgInfo);
@@ -42,7 +42,7 @@ chrome.commands.onCommand.addListener(function(command) {
       //TODO: check for more specific path (rather than just sprinklr.com)?
       if(tab[0].url.includes("sprinklr.com")) {
         //have copy.js get the message ID from the page's HTML
-        chrome.tabs.executeScript(tab[0].id, {file: 'copy.js'});
+        chrome.tabs.executeScript(tab[0].id, {file: 'getMsgID.js'});
       } else {
         //TODO: Should we display an alert, or would it be better to not do anything?
         alert("This command (Alt+C) only works in Sprinklr");
