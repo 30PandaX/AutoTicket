@@ -29,31 +29,23 @@ function autofill() {
     document.querySelector("#Memo64").value = infoCase.workflow.customFields["5c3f7f66e4b00ecbb3523869"];
 
     //Interaction Location
-    document.querySelector("#Memo71").value = "Comment / Tweet";
+    document.querySelector("#Memo71").value = infoCase.channelType;
 
     //Customer Number (if known)
     document.querySelector("#Memo41").value = "000001";
 
     //Customer's Post
-    document.querySelector("#steps_to_reproduce").value = infoCase.description;
+    document.querySelector("#steps_to_reproduce").value = infoCase.content.text;
 
     //Link to Interaction
     document.querySelector("#Right40").value = "https://www.sprinklr.com";
-  });
-
-  chrome.storage.local.get("ProfileData", function(result) {
-    let infoProfile = result["ProfileData"].data;
-
     //Customer Name
-    document.querySelector("#Memo42").value = infoProfile.profiles[0].name; // or username
-
-    //Social Media Channel
-    var snChannel = infoProfile.profiles[0].channelType.toLowerCase();
-    snChannel = snChannel.charAt(0).toUpperCase()+snChannel.slice(1);
-    document.querySelector("#Memo34").value = snChannel;
-
+    document.querySelector("#Memo42").value = infoProfile.senderProfile.username; // or username
   });
 
+  // var snChannel = infoProfile.profiles[0].channelType.toLowerCase();
+  // snChannel = snChannel.charAt(0).toUpperCase()+snChannel.slice(1);
+  // document.querySelector("#Memo34").value = snChannel;
   //now that the data has been used, remove it from local storage
   chrome.storage.local.remove(["CaseData"], function() {
     console.log("deleted CaseData JSON.");
