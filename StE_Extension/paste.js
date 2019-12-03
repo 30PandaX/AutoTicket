@@ -59,7 +59,7 @@ function autofill() {
     document.querySelector("#steps_to_reproduce").value = msgInfo.content.text;
 
     //Link to Interaction
-    //document.querySelector("#Right40").value = "https://www.sprinklr.com";
+    // document.querySelector("#Right40").value = msgInfo.permalink;
 
     //Customer Name
     document.querySelector("#Memo42").value = msgInfo.senderProfile.username; // or username
