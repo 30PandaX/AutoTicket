@@ -1,6 +1,10 @@
 {
   "name": "Sprinklr to Elementool",
   "version": "1.0",
+  "browser_action": {
+    "default_popup": "hello.html",
+    "default_icon": "icon16.png"
+  },
   "description": "Fills in fields of an Elementool ticket using data from Sprinklr",
   "permissions": [
     "storage",
