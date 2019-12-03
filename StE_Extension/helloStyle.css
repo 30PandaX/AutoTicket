@@ -1,0 +1,17 @@
+body {
+  width: 400px;
+  background-color: #015293;
+  color: white;
+  text-align: center;
+}
+
+.outer {
+  margin: 10px;
+  border: 5px solid white;
+  border-radius: 10px;
+}
+
+ol {
+  text-align: left;
+  font-weight: bold;
+}
