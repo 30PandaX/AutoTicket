@@ -1,4 +1,3 @@
-<<<<<<< Updated upstream
 'use strict';
 function intToSentiment(num) {
   if (num == -1) {return "Negative";}
