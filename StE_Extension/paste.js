@@ -10,22 +10,7 @@ function formatChannelName(name) {
   //TODO: add more channels?
   if (name == "FACEBOOK") {return "Facebook";}
   else if (name == "TWITTER") {return "Twitter";}
-  else if (name == "INSTAGRAM") {return "Instagram";}
   else {return "";}
-}
-
-function findLocation(name, link, visibility) {
-  if (name == "FACEBOOK") {
-    //TODO: wasn't able to find a wall post to test. Not sure if this is working correctly
-    if (visibility == "Private") {return "PM / DM";}
-    else if (link.includes("comment")) {return "Comment / Tweet";}
-    else {return "Wall Post";}
-  } else if (name == "TWITTER") {
-    if (visibility == "Private") {return "PM / DM";}
-    else {return "Comment / Tweet";}
-  } else {
-    return "";
-  }
 }
 
 function autofill() {
@@ -39,7 +24,7 @@ function autofill() {
     // format 11/15/2019
     let date = new Date(msgInfo.createdTime);
     let dateOfCustomer = document.querySelector("#Left36");
-    let datestring = ('0' + date.getMonth()).slice(-2) + '/' +
+    let datestring = ('0' + (date.getMonth()+ 1)).slice(-2) + '/' +
                     ('0' + date.getDate()).slice(-2) + '/' +
                     date.getFullYear();
 
@@ -65,7 +50,7 @@ function autofill() {
     document.querySelector("#Memo34").value = formatChannelName(msgInfo.channelType);
 
     //Interaction Location
-    document.querySelector("#Memo71").value = findLocation(msgInfo.channelType, msgInfo.permalink, msgInfo.workflow.customFields["5c490fd3e4b0afd92c3e6a7a"][0]);
+    //document.querySelector("#Memo71").value =
 
     //Customer Number (if known)
     //document.querySelector("#Memo41").value = "000001";
