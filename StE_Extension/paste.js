@@ -24,7 +24,7 @@ function autofill() {
     // format 11/15/2019
     let date = new Date(msgInfo.createdTime);
     let dateOfCustomer = document.querySelector("#Left36");
-    let datestring = ('0' + date.getMonth()).slice(-2) + '/' +
+    let datestring = ('0' + (date.getMonth()+ 1)).slice(-2) + '/' +
                     ('0' + date.getDate()).slice(-2) + '/' +
                     date.getFullYear();
 
