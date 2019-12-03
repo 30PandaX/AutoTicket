@@ -1,5 +1,4 @@
 'use strict';
-
 function intToSentiment(num) {
   if (num == -1) {return "Negative";}
   else if (num == 0) {return "Neutral";}
@@ -25,8 +24,13 @@ function autofill() {
     // format 11/15/2019
     let date = new Date(msgInfo.createdTime);
     let dateOfCustomer = document.querySelector("#Left36");
+    let datestring = ('0' + date.getMonth()).slice(-2) + '/' +
+                    ('0' + date.getDate()).slice(-2) + '/' +
+                    date.getFullYear();
+
     dateOfCustomer.readOnly = false;
-    dateOfCustomer.value = date.toLocaleDateString();
+
+    dateOfCustomer.value = datestring;
     dateOfCustomer.readOnly = true;
 
     // Time of Customer Post
