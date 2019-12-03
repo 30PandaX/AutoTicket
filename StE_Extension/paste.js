@@ -10,7 +10,22 @@ function formatChannelName(name) {
   //TODO: add more channels?
   if (name == "FACEBOOK") {return "Facebook";}
   else if (name == "TWITTER") {return "Twitter";}
+  else if (name == "INSTAGRAM") {return "Instagram";}
   else {return "";}
+}
+
+function findLocation(name, link, visibility) {
+  if (name == "FACEBOOK") {
+    //TODO: wasn't able to find a wall post to test. Not sure if this is working correctly
+    if (visibility == "Private") {return "PM / DM";}
+    else if (link.includes("comment")) {return "Comment / Tweet";}
+    else {return "Wall Post";}
+  } else if (name == "TWITTER") {
+    if (visibility == "Private") {return "PM / DM";}
+    else {return "Comment / Tweet";}
+  } else {
+    return "";
+  }
 }
 
 function autofill() {
@@ -50,7 +65,7 @@ function autofill() {
     document.querySelector("#Memo34").value = formatChannelName(msgInfo.channelType);
 
     //Interaction Location
-    //document.querySelector("#Memo71").value =
+    document.querySelector("#Memo71").value = findLocation(msgInfo.channelType, msgInfo.permalink, msgInfo.workflow.customFields["5c490fd3e4b0afd92c3e6a7a"][0]);
 
     //Customer Number (if known)
     //document.querySelector("#Memo41").value = "000001";
@@ -59,7 +74,7 @@ function autofill() {
     document.querySelector("#steps_to_reproduce").value = msgInfo.content.text;
 
     //Link to Interaction
-    // document.querySelector("#Right40").value = msgInfo.permalink;
+    //document.querySelector("#Right40").value = "https://www.sprinklr.com";
 
     //Customer Name
     document.querySelector("#Memo42").value = msgInfo.senderProfile.username; // or username
