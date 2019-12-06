@@ -32,8 +32,20 @@ async function apiCall(caseNo) {
   chrome.storage.local.set({ProfileData: infoProfile}, function() {
     console.log("Stored ProfileData JSON.");
   });
-};
 
+  //Case Associated Messages
+  let caseId = infoCase.data[0].id;
+  let responseAllMsg = await fetch('https://api2.sprinklr.com/api/v2/case/associated-messages?id='+caseId, config);
+  let infoAllMsg = await responseAllMsg.json();
+  //Fetch by Message ID
+  var msgId = infoAllMsg.data[infoAllMsg.data.length - 1];
+  msgId = msgId.substr(msgId.indexOf(infoProfile.data.profiles[0].channelType));
+  let responseMsg = await fetch('https://api2.sprinklr.com/api/v2/message?sourceType=ACCOUNT&id='+msgId, config);
+  let infoMsg = await responseMsg.json();
+  chrome.storage.local.set({MsgData: infoMsg}, function() {
+    console.log("Stored MessageData JSON.");
+  });
+};
 
 //listen for user commands
 chrome.commands.onCommand.addListener(function(command) {
