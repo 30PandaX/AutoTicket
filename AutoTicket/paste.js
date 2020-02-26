@@ -76,7 +76,7 @@ function autofill() {
     document.querySelector("#Memo34").value = formatChannelName(msgInfo.channelType);
 
     //Interaction Location
-    document.querySelector("#Memo71").value = findLocation(msgInfo.channelType, msgInfo.permalink, msgInfo.workflow.customFields["5c490fd3e4b0afd92c3e6a7a"][0]);
+    document.querySelector("#Memo71").value = findLocation(msgInfo.channelType, msgInfo.permalink, msgInfo.workflow.customProperties["5c490fd3e4b0afd92c3e6a7a"][0]);
 
     //Customer Number (if known)
     //document.querySelector("#Memo41").value = "000001";
