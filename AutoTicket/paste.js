@@ -42,9 +42,7 @@ function autofill() {
     let datestring = ('0' + (date.getMonth()+ 1)).slice(-2) + '/' +
                     ('0' + date.getDate()).slice(-2) + '/' +
                     date.getFullYear();
-
     dateOfCustomer.readOnly = false;
-
     dateOfCustomer.value = datestring;
     dateOfCustomer.readOnly = true;
 
@@ -56,7 +54,17 @@ function autofill() {
     // AM or PM
     // format PM
     let mIndex = time.indexOf("M");
-    document.querySelector("#Left37_ampm").value = time.substr(mIndex-1, mIndex);;
+    document.querySelector("#Left37_ampm").value = time.substr(mIndex-1, mIndex);
+
+    //Date of Sleep Number Reply
+    let dateOfReplyField = document.querySelector("#Left38");
+    let replyDate = new Date();
+    let replyDateString = ('0' + (replyDate.getMonth()+ 1)).slice(-2) + '/' +
+                          ('0' + replyDate.getDate()).slice(-2) + '/' +
+                          replyDate.getFullYear();
+    dateOfReplyField.readOnly = false;
+    dateOfReplyField.value = replyDateString;
+    dateOfReplyField.readOnly = true;
 
     //Tonality
     document.querySelector("#Memo64").value = intToSentiment(msgInfo.enrichments.sentiment);
