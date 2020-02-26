@@ -69,6 +69,9 @@ function autofill() {
     //Tonality
     document.querySelector("#Memo64").value = intToSentiment(msgInfo.enrichments.sentiment);
 
+    //AutoTicket checkbox
+    document.querySelector("#Memo84").checked = true;
+
     //Social Media Channel
     document.querySelector("#Memo34").value = formatChannelName(msgInfo.channelType);
 
