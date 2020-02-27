@@ -1,13 +1,13 @@
 body {
   width: 400px;
-  background-color: #015293;
-  color: white;
+  background-color: #FFFFFF;
+  color: Black;
   text-align: center;
 }
 
 .outer {
   margin: 10px;
-  border: 5px solid white;
+  border: 2px solid Black;
   border-radius: 10px;
 }
 
