@@ -50,8 +50,10 @@ function autofill() {
     // format 12:00
     let time = date.toLocaleTimeString();
     let secondColonIndex = time.indexOf(":", 4);
-    document.querySelector("#Left37").value = time.substr(0, secondColonIndex);
     document.querySelector("#igtxtLeft37").value = time.substr(0, secondColonIndex);
+    document.querySelector("#igtxtLeft37").select();
+    window.getSelection().removeAllRanges();
+
     // AM or PM
     // format PM
     let mIndex = time.indexOf("M");
