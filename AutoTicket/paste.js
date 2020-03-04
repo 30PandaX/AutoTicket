@@ -6,9 +6,15 @@ function intToSentiment(num) {
   else {return "";}
 }
 
-function formatChannelName(name) {
+function formatChannelName(name, link) {
   //TODO: add more channels?
-  if (name == "FACEBOOK") {return "Facebook";}
+  if (name == "FACEBOOK") {
+    if(link.includes("sleepnumbercareers")) {
+      return "Career's Facebook";
+    } else {
+      return "Facebook";
+    }
+  }
   else if (name == "TWITTER") {return "Twitter";}
   else if (name == "INSTAGRAM") {return "Instagram";}
   else {return "";}
@@ -76,7 +82,7 @@ function autofill() {
     document.querySelector("#Memo84").checked = true;
 
     //Social Media Channel
-    document.querySelector("#Memo34").value = formatChannelName(msgInfo.channelType);
+    document.querySelector("#Memo34").value = formatChannelName(msgInfo.channelType, msgInfo.permalink);
 
     //Interaction Location
     document.querySelector("#Memo71").value = findLocation(msgInfo.channelType, msgInfo.permalink, msgInfo.workflow.customProperties["5c490fd3e4b0afd92c3e6a7a"][0]);
