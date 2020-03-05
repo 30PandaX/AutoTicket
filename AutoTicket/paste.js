@@ -41,6 +41,22 @@ function autofill() {
   chrome.storage.local.get("MsgData", function(result) {
     let msgInfo = result["MsgData"].data;
 
+    // replace link with its screen name if link is not
+    // 1. url or 2. starts with @
+    if (msgInfo.hasOwnProperty('textEntities')){
+      if(msgInfo.textEntities.hasOwnProperty('message')){
+        if(msgInfo.textEntities.message[0].hasOwnProperty('screenName')){
+          let replaceStart = msgInfo.textEntities.message[0].indices[0];
+          let replaceEnd = msgInfo.textEntities.message[0].indices[1];
+          let replaceWord = msgInfo.textEntities.message[0].screenName;
+          let msgLength = msgInfo.content.text.length;
+          if(msgInfo.content.text.substring(start, start+1) != "@"){
+            msgInfo.content.text = msgInfo.content.text.substring(0, start) + replaceWord + msgInfo.content.text.substring(end, msgLength);
+          }
+        }
+      }
+    }
+
     // Date of Customer Post
     // format 11/15/2019
     let date = new Date(msgInfo.createdTime);
