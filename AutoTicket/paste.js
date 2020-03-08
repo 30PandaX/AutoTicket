@@ -1,8 +1,8 @@
 'use strict';
 function intToSentiment(num) {
-  if (num == -1) {return "Negative";}
+  if (num < 0) {return "Negative";}
   else if (num == 0) {return "Neutral";}
-  else if (num == 1) {return "Positive";}
+  else if (num > 0) {return "Positive";}
   else {return "";}
 }
 
