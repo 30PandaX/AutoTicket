@@ -109,6 +109,8 @@ function autofill() {
             if (msgInfo.workflow.customProperties.hasOwnProperty('5c490fd3e4b0afd92c3e6a7a')){
               //Interaction Location
               document.querySelector("#Memo71").value = findLocation(msgInfo.channelType, msgInfo.permalink, msgInfo.workflow.customProperties["5c490fd3e4b0afd92c3e6a7a"][0]);
+            // } else {
+            //   document.querySelector("#Memo71").value = findLocation(msgInfo.channelType, msgInfo.permalink, "Public"); // default to be public
             }
           }
         }
