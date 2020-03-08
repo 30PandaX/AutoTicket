@@ -53,11 +53,12 @@ function autofill() {
         if(msgInfo.content.text.substring(replaceStart, replaceStart+1) != "@"){
           msgInfo.content.text = msgInfo.content.text.substring(0, replaceStart) + replaceWord + msgInfo.content.text.substring(replaceEnd, msgLength);
         }
-        //Customer's Post
-        document.querySelector("#steps_to_reproduce").value = msgInfo.content.text;
       }
     }
   }
+
+  //Customer's Post
+  document.querySelector("#steps_to_reproduce").value = msgInfo.content.text;
 
   // Date of Customer Post
   // format 11/15/2019
