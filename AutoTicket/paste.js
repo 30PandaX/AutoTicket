@@ -110,17 +110,23 @@ function autofill() {
     }
   }
 
+  var visibility = "Public";  // default to public
   if (msgInfo.hasOwnProperty('channelType') && msgInfo.hasOwnProperty('permalink')){
         //Social Media Channel
         document.querySelector("#Memo34").value = formatChannelName(msgInfo.channelType, msgInfo.permalink);
         if (msgInfo.hasOwnProperty('workflow')){
           if (msgInfo.workflow.hasOwnProperty('customProperties')){
             if (msgInfo.workflow.customProperties.hasOwnProperty('5c490fd3e4b0afd92c3e6a7a')){
-              //Interaction Location
-              document.querySelector("#Memo71").value = findLocation(msgInfo.channelType, msgInfo.permalink, msgInfo.workflow.customProperties["5c490fd3e4b0afd92c3e6a7a"][0]);
-            // } else {
-            //   document.querySelector("#Memo71").value = findLocation(msgInfo.channelType, msgInfo.permalink, "Public"); // default to be public
+              visibility = msgInfo.workflow.customProperties["5c490fd3e4b0afd92c3e6a7a"][0];
+            } else {
+              if (msgInfo.workflow.customProperties.hasOwnProperty('5c3f7af3e4b00ecbb34f5434')) {
+                if(msgInfo.workflow.customProperties["5c3f7af3e4b00ecbb34f5434"][0] == "No") {
+                  visibility = "Private";
+                }
+              }
             }
+            //Interaction Location
+            document.querySelector("#Memo71").value = findLocation(msgInfo.channelType, msgInfo.permalink, visibility);
           }
         }
       }
