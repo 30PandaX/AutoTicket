@@ -23,12 +23,21 @@ function formatChannelName(name, link) {
 function findLocation(name, link, visibility) {
   if (name == "FACEBOOK") {
     //TODO: wasn't able to find a wall post to test. Not sure if this is working correctly
-    if (visibility == "Private") {return "PM / DM";}
-    else if (link.includes("comment")) {return "Comment / Tweet";}
-    else {return "Wall Post";}
+    if (visibility == "Private") {
+      return "PM / DM";
+    } else if (link.includes("comment")) {
+      return "Comment / Tweet";
+    } else {
+      return "Wall Post";
+    }
   } else if (name == "TWITTER") {
-    if (visibility == "Private") {return "PM / DM";}
-    else {return "Comment / Tweet";}
+    if (visibility == "Private") {
+      return "PM / DM";
+    } else {
+      return "Comment / Tweet";
+    }
+  } else if (name == "INSTAGRAM") {
+    return "Tier2";
   } else {
     return "";
   }
@@ -126,7 +135,7 @@ function autofill() {
     //document.querySelector("#Right40").value = "https://www.sprinklr.com";
 
     //Customer Name
-    document.querySelector("#Memo42").value = msgInfo.senderProfile.username; // or username
+    document.querySelector("#Memo42").value = msgInfo.senderProfile.username;
   });
 
   //now that the data has been used, remove it from local storage
