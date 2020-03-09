@@ -118,12 +118,12 @@ function autofill() {
           if (msgInfo.workflow.hasOwnProperty('customProperties')){
             if (msgInfo.workflow.customProperties.hasOwnProperty('5c490fd3e4b0afd92c3e6a7a')){
               visibility = msgInfo.workflow.customProperties["5c490fd3e4b0afd92c3e6a7a"][0];
-            } else {
-              if (msgInfo.workflow.customProperties.hasOwnProperty('5c3f7af3e4b00ecbb34f5434')) {
-                if(msgInfo.workflow.customProperties["5c3f7af3e4b00ecbb34f5434"][0] == "No") {
-                  visibility = "Private";
-                }
-              }
+            // } else {
+            //   if (msgInfo.workflow.customProperties.hasOwnProperty('5c3f7af3e4b00ecbb34f5434')) { // Sourced From Listening
+            //     if(msgInfo.workflow.customProperties["5c3f7af3e4b00ecbb34f5434"][0] == "No") {
+            //       visibility = "Private";
+            //     }
+            //   }
             }
             //Interaction Location
             document.querySelector("#Memo71").value = findLocation(msgInfo.channelType, msgInfo.permalink, visibility);
