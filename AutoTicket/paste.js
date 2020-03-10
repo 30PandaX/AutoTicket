@@ -110,10 +110,11 @@ function autofill() {
     }
   }
 
+  //Social Media Channel
+  document.querySelector("#Memo34").value = formatChannelName(msgInfo.channelType, msgInfo.permalink);
+
   var visibility = "Public";  // default to public
-  if (msgInfo.hasOwnProperty('channelType') && msgInfo.hasOwnProperty('permalink')){
-        //Social Media Channel
-        document.querySelector("#Memo34").value = formatChannelName(msgInfo.channelType, msgInfo.permalink);
+  if (msgInfo.hasOwnProperty('permalink')){
         if (msgInfo.hasOwnProperty('workflow')){
           if (msgInfo.workflow.hasOwnProperty('customProperties')){
             if (msgInfo.workflow.customProperties.hasOwnProperty('5c490fd3e4b0afd92c3e6a7a')){
@@ -129,6 +130,9 @@ function autofill() {
             document.querySelector("#Memo71").value = findLocation(msgInfo.channelType, msgInfo.permalink, visibility);
           }
         }
+      } else {
+        //Interaction Location
+        document.querySelector("#Memo71").value = findLocation(msgInfo.channelType, "", "Private");
       }
 
     //AutoTicket checkbox
