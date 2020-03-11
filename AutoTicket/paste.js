@@ -17,6 +17,7 @@ function formatChannelName(name, link) {
   }
   else if (name == "TWITTER") {return "Twitter";}
   else if (name == "INSTAGRAM") {return "Instagram";}
+  else if (name == "YOUTUBE") {return "Facebook";}
   else {return "";}
 }
 
@@ -38,8 +39,18 @@ function findLocation(name, link, visibility) {
     }
   } else if (name == "INSTAGRAM") {
     return "Tier2";
+  } else if (name == "YOUTUBE"){
+    return "Comment / Tweet";
   } else {
     return "";
+  }
+}
+
+function addSpecialNote(name, text) {
+  if (name == "YOUTUBE") {
+    return "***YOUTUBE COMMENT***\n" + text;
+  } else {
+    return text;
   }
 }
 
@@ -65,6 +76,9 @@ function autofill() {
       }
     }
   }
+
+  // add special identifier for SN internal use, eg: "***YOUTUBE COMMENT***"
+  msgInfo.content.text = addSpecialNote(msgInfo.channelType, msgInfo.content.text);
 
   //Customer's Post
   document.querySelector("#steps_to_reproduce").value = msgInfo.content.text;
