@@ -9,7 +9,10 @@ function intToSentiment(num) {
 function formatChannelName(name, link) {
   //TODO: add more channels?
   if (name == "FACEBOOK") {
-    if(link.includes("sleepnumbercareers")) {
+    //sometimes sprinklr provides a link of the form www.facebook.com/71091028689
+    //instead of www.facebook.com/sleepnumbercareers
+    //www.facebook.com/71091028689 just redirects to sleepnumbercareers, so check for either
+    if(link.includes("facebook.com/sleepnumbercareers") || link.includes("facebook.com/71091028689")) {
       return "Career's Facebook";
     } else {
       return "Facebook";
