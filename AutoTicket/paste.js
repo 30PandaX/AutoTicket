@@ -123,7 +123,8 @@ function autofill() {
   if (msgInfo.hasOwnProperty('enrichments')){
     if (msgInfo.enrichments.hasOwnProperty('sentiment')){
       //Tonality
-      document.querySelector("#Memo64").value = intToSentiment(msgInfo.enrichments.sentiment);
+      // document.querySelector("#Memo64").value = intToSentiment(msgInfo.enrichments.sentiment);
+      // Editing the extension to exclude tonality -- Katy
     }
   }
 
