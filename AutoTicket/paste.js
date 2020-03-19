@@ -49,6 +49,25 @@ function findLocation(name, link, visibility) {
   }
 }
 
+function replaceTextEntities(messages, text){
+  for (var i = 0; i < messages.length; i++) {
+    let message = messages[i];
+    let replaceStart = message.indices[0];
+    let replaceEnd = message.indices[1];
+    let tag = text.substring(replaceStart, replaceStart+1);
+    if (tag != "@" && tag != "#") {
+      var replaceWord = "REDACTED";
+      if (message.hasOwnProperty('screenName')) {
+        replaceWord = message.screenName;
+      } else if (message.hasOwnProperty('url')) {
+        replaceWord = message.url;
+      }
+      text = text.substring(0, replaceStart) + replaceWord + text.substring(replaceEnd, text.length);
+    }
+  }
+  return text;
+}
+
 function addSpecialNote(name, text) {
   if (name == "YOUTUBE") {
     return "***YOUTUBE COMMENT***\n" + text;
@@ -64,19 +83,12 @@ function autofill() {
   chrome.storage.local.get("MsgData", function(result) {
     let msgInfo = result["MsgData"].data;
 
-  // replace link with its screen name if link is not
-  // 1. url or 2. starts with @
+  // Always show links tagged with @ or #
+  // Display screen name and url
+  // Other types of links will be REDACTED
   if (msgInfo.hasOwnProperty('textEntities')){
     if(msgInfo.textEntities.hasOwnProperty('message')){
-      if(msgInfo.textEntities.message[0].hasOwnProperty('screenName')){
-        let replaceStart = msgInfo.textEntities.message[0].indices[0];
-        let replaceEnd = msgInfo.textEntities.message[0].indices[1];
-        let replaceWord = msgInfo.textEntities.message[0].screenName;
-        let msgLength = msgInfo.content.text.length;
-        if(msgInfo.content.text.substring(replaceStart, replaceStart+1) != "@"){
-          msgInfo.content.text = msgInfo.content.text.substring(0, replaceStart) + replaceWord + msgInfo.content.text.substring(replaceEnd, msgLength);
-        }
-      }
+      msgInfo.content.text = replaceTextEntities(msgInfo.textEntities.message, msgInfo.content.text);
     }
   }
 
