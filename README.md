@@ -2,11 +2,7 @@
 AutoTicket is a chrome extension that ease the process to copy customer conversations from Sprinklr and paste to Elementool.
 
 ## How to use AutoTicket
-<object data="https://github.umn.edu/sleepnumber4950/AutoTicket/blob/version2/User%20Instructions.pdf" type="application/pdf" width="700px" height="700px">
-    <embed src="https://github.umn.edu/sleepnumber4950/AutoTicket/blob/version2/User%20Instructions.pdf">
-        <p><a href="https://github.umn.edu/sleepnumber4950/AutoTicket/blob/version2/User%20Instructions.pdf">User Guide</a></p>
-    </embed>
-</object>
+<a href="https://github.umn.edu/sleepnumber4950/AutoTicket/blob/version2/User%20Instructions.pdf">User Guide</a>
 
 ## Branch Description
 | Status          | Branch                  | Description                                   |
@@ -35,30 +31,30 @@ AutoTicket is a chrome extension that ease the process to copy customer conversa
 | icon16.png, icon48.png, icon128.png | chrome extension icon in different resolution                             |
 
 ## [Sprinklr API Call] <sup>5
-| Elementool Table Entry           | Query Selector      |     | API Response JSON Value <sup>1                                             | AutoTicket Behavior | Remark                         |
-| -------------------------------- | ------------------- | --- | -------------------------------------------------------------------------- | ------------------- | ------------------------------ |
-| Tonality                         | #Memo64             |     | `data.enrichments.sentiment`                                               | Fill                |                                |
-| Follow Up                        |                     |     | /                                                                          | Leave Empty         | What is "follow up"?           |
-| Issue                            |                     |     | /                                                                          | Leave Empty         | Unable to determine without ML |
-| Social Media Channel             | #Memo34             |     | `data.channelType`                                                         | Fill <sup>2         |                                |
-|                                  |                     |     | `data.permalink`                                                           |                     |                                |
-| Interaction Location             | #Memo71             |     | `data.channelType`                                                         | Fill <sup>3         |                                |
-|                                  |                     |     | `data.permalink`                                                           |                     |                                |
-|                                  |                     |     | `data.permalink.workflow.customProperties ["5c490fd3e4b0afd92c3e6a7a"][0]` |                     | `messageType`                  |
-| Customer Name                    | #Memo42             |     | `data.senderProfile.username`                                              | Fill                |                                |
-| Customer Number                  | #Memo41             |     | /                                                                          | Leave Empty         |                                |
-| Customer's Post                  | #steps_to_reproduce |     | `data.content.text`                                                        | Fill <sup>4         |                                |
-|                                  |                     |     | `data.textEntities.message[0]`                                             |                     |                                |
-| Sleep Number's Response          |                     |     | /                                                                          | Leave Empty         |                                |
-| Additional Details               |                     |     | /                                                                          | Leave Empty         |                                |
-| Link to Interaction              | #Right40            |     | /                                                                          | Leave Empty         |                                |
-| Reported By                      |                     |     | /                                                                          | Do Not Change       | Filled by Elementool           |
-| Date of Customer Post            | #Left36             |     | `data.createdTime`                                                         | Fill                |                                |
-| Time of Customer Post            | #igtxtLeft37        |     | Same As Above                                                              | Fill                |                                |
-| Time of Customer Post AM/PM      | #Left37_ampm        |     | Same As Above                                                              | Fill                |                                |
-| Date of Sleep Number Reply       | #Left38             |     | /                                                                          | Fill                | Current System Time            |
-| Time of Sleep Number Reply       |                     |     | /                                                                          | Leave Empty         |                                |
-| Time of Sleep Number Reply AM/PM |                     |     | /                                                                          | Leave Empty         |                                |
+| Elementool Table Entry           | Query Selector      |     | API Response JSON Value <sup>1                                             | AutoTicket Behavior | Remark                                     |
+| -------------------------------- | ------------------- | --- | -------------------------------------------------------------------------- | ------------------- | ------------------------------------------ |
+| Tonality                         | #Memo64             |     | `data.enrichments.sentiment`                                               | Leave empty         | Excluded because Sprinklr's tonality sucks |
+| Follow Up                        |                     |     | /                                                                          | Leave Empty         | What is "follow up"?                       |
+| Issue                            |                     |     | /                                                                          | Leave Empty         | Unable to determine without ML             |
+| Social Media Channel             | #Memo34             |     | `data.channelType`                                                         | Fill <sup>2         |                                            |
+|                                  |                     |     | `data.permalink`                                                           |                     |                                            |
+| Interaction Location             | #Memo71             |     | `data.channelType`                                                         | Fill <sup>3         |                                            |
+|                                  |                     |     | `data.permalink`                                                           |                     |                                            |
+|                                  |                     |     | `data.permalink.workflow.customProperties ["5c490fd3e4b0afd92c3e6a7a"][0]` |                     | `messageType`                              |
+| Customer Name                    | #Memo42             |     | `data.senderProfile.username`                                              | Fill                |                                            |
+| Customer Number                  | #Memo41             |     | /                                                                          | Leave Empty         |                                            |
+| Customer's Post                  | #steps_to_reproduce |     | `data.content.text`                                                        | Fill <sup>4         |                                            |
+|                                  |                     |     | `data.textEntities.message[0]`                                             |                     |                                            |
+| Sleep Number's Response          |                     |     | /                                                                          | Leave Empty         |                                            |
+| Additional Details               |                     |     | /                                                                          | Leave Empty         |                                            |
+| Link to Interaction              | #Right40            |     | /                                                                          | Leave Empty         |                                            |
+| Reported By                      |                     |     | /                                                                          | Do Not Change       | Filled by Elementool                       |
+| Date of Customer Post            | #Left36             |     | `data.createdTime`                                                         | Fill                |                                            |
+| Time of Customer Post            | #igtxtLeft37        |     | Same As Above                                                              | Fill                |                                            |
+| Time of Customer Post AM/PM      | #Left37_ampm        |     | Same As Above                                                              | Fill                |                                            |
+| Date of Sleep Number Reply       | #Left38             |     | /                                                                          | Fill                | Current System Time                        |
+| Time of Sleep Number Reply       |                     |     | /                                                                          | Leave Empty         |                                            |
+| Time of Sleep Number Reply AM/PM |                     |     | /                                                                          | Leave Empty         |                                            |
 
 
 1: `data` = `response.json().data`
