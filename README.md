@@ -80,6 +80,7 @@ AutoTicket is a chrome extension that ease the process to copy customer conversa
 | Others        | ""                         | ""            | Leave Empty                           |
 
 4: Changes on Customer's Post
+
 | IF                                                              | THEN                               | Remark |
 | --------------------------------------------------------------- | ---------------------------------- | ------ |
 | hyperlink starts with "#" or "@"                                | keep original                      |        |
