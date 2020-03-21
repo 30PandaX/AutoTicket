@@ -61,13 +61,13 @@ AutoTicket is a chrome extension that ease the process to copy customer conversa
 
 2: How to determine Social Media Channel
 
-| `channelType` | Social Media Channel              | Remark                                                                            |
-| ------------- | --------------------------------- | --------------------------------------------------------------------------------- |
-| FACEBOOK      | "Career's Facebook" or "Facebook" |                                                                                   |
-| TWITTER       | "Twitter"                         |                                                                                   |
-| INSTAGRAM     | "Instagram"                       |                                                                                   |
-| YOUTUBE       | "Facebook"                        | Because Elementool doesn't have YouTube. Add speical mark before Customer's Post. |
-| Others        | ""                                | Leave Empty                                                                       |
+| `channelType` | Social Media Channel              | Remark                                                                                                 |
+| ------------- | --------------------------------- | ------------------------------------------------------------------------------------------------------ |
+| FACEBOOK      | "Career's Facebook" or "Facebook" | "Career's Facebook" permalink contains "facebook.com/sleepnumbercareers" or "facebook.com/71091028689" |
+| TWITTER       | "Twitter"                         |                                                                                                        |
+| INSTAGRAM     | "Instagram"                       |                                                                                                        |
+| YOUTUBE       | "Facebook"                        | Because Elementool doesn't have YouTube. Add speical mark before Customer's Post.                      |
+| Others        | ""                                | Leave Empty                                                                                            |
 
 3: How to determine Interaction Location
 
@@ -79,21 +79,26 @@ AutoTicket is a chrome extension that ease the process to copy customer conversa
 | YOUTUBE       | Comment/Tweet              | Comment/Tweet |                                       |
 | Others        | ""                         | ""            | Leave Empty                           |
 
-4: How to amend Customer's Post
-1. Replace link with Screen Name except starting with "@"
-2. Add special identifier
+4: Changes on Customer's Post
+| IF                                                              | THEN                               | Remark |
+| --------------------------------------------------------------- | ---------------------------------- | ------ |
+| hyperlink starts with "#" or "@"                                | keep original                      |        |
+| hyperlink that has `msgInfo.textEntities.message[i].url`        | show url                           |        |
+| hyperlink that has `msgInfo.textEntities.message[i].screenName` | show screenName                    |        |
+| from YouTube                                                    | add "***YOUTUBE COMMENT***" before |        |
+| Others                                                          | replace with "REDACTED"            | Email  |
 
 5: Assumptions made on what's inside API Response json
 
-| API Response JSON Value        | Assumption         | Conditional Check Before Accessing       |
-| ------------------------------ | ------------------ | ---------------------------------------- |
-| `data.enrichments.sentiment`   | May not be present | Yes                                      |
-| `data.channelType`             | Always present     | No                                       |
-| `data.permalink`               | Sometimes present  | Yes; used to identify PM/DM from Twitter |
-| `messageType`                  | May not be present | Yes                                      |
-| `data.content.text`            | Always present     | No                                       |
-| `data.textEntities.message[0]` | May not be present | Yes                                      |
-| `data.senderProfile.username`  | Always present     | No                                       |
-| `data.createdTime`             | Always present     | No                                       |
+| API Response JSON Value        | Assumption                                                                   | Conditional Check Before Accessing       |
+| ------------------------------ | ---------------------------------------------------------------------------- | ---------------------------------------- |
+| `data.enrichments.sentiment`   | May not be present                                                           | Yes                                      |
+| `data.channelType`             | Always present                                                               | No                                       |
+| `data.permalink`               | Always present in Facebook and public Twitter <br> Not present in Twitter PM | Yes; used to identify PM/DM from Twitter |
+| `messageType`                  | May not be present                                                           | Yes                                      |
+| `data.content.text`            | Always present                                                               | No                                       |
+| `data.textEntities.message[0]` | May not be present                                                           | Yes                                      |
+| `data.senderProfile.username`  | Always present                                                               | No                                       |
+| `data.createdTime`             | Always present                                                               | No                                       |
 
 [Sprinklr API Call]: https://developer.sprinklr.com/docs/read/api_20/messages_api_20/Fetch_Message_by_ID_and_Source_Type
