@@ -9,6 +9,11 @@ function intToSentiment(num) {
 function formatChannelName(name, link) {
   //TODO: add more channels?
   if (name == "FACEBOOK") {
+    //first check if it's an instagram post that sprinklr classified as facebook
+    //for example, this seems to be the case for instagram dark post comments
+    if(link.includes("instagram.com")) {
+      return "Instagram";
+    }
     //sometimes sprinklr provides a link of the form www.facebook.com/71091028689
     //instead of www.facebook.com/sleepnumbercareers
     //www.facebook.com/71091028689 just redirects to sleepnumbercareers, so check for either
@@ -26,6 +31,11 @@ function formatChannelName(name, link) {
 
 function findLocation(name, link, visibility) {
   if (name == "FACEBOOK") {
+    //first check if it's an instagram post that sprinklr classified as facebook
+    //for example, this seems to be the case for instagram dark post comments
+    if(link.includes("instagram.com")) {
+      return "Tier2";
+    }
     //TODO: wasn't able to find a wall post to test. Not sure if this is working correctly
     if (visibility == "Private") {
       return "PM / DM";
