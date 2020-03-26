@@ -14,8 +14,15 @@ async function apiCall(msgID) {
     }
   };
   //now we are ready to make the API call
-  let msgResponse = await fetch('https://api2.sprinklr.com/api/v2/message?sourceType=ACCOUNT&id='+msgID, config);
-  let msgInfo = await msgResponse.json();
+  var msgResponse = await fetch('https://api2.sprinklr.com/api/v2/message?sourceType=ACCOUNT&id='+msgID, config);
+  var msgInfo = await msgResponse.json();
+
+  if (msgInfo.errors.length > 0) {
+    if (msgInfo.errors[0].code == 404) {
+      msgResponse = await fetch('https://api2.sprinklr.com/api/v2/message?sourceType=LISTENING&id='+msgID, config);
+      msgInfo = await msgResponse.json();
+    }
+  }
 
   console.log(msgInfo);
 
