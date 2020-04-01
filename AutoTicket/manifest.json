@@ -8,7 +8,7 @@
   "description": "Fills in fields of an Elementool ticket using data from Sprinklr",
   "permissions": [
     "storage",
-    "tabs",
+    "activeTab",
     "<all_urls>"
   ],
   "background": {
