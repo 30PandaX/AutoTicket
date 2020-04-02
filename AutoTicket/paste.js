@@ -175,9 +175,6 @@ function autofill() {
         document.querySelector("#Memo71").value = findLocation(msgInfo.channelType, "", "Private");
       }
 
-    //AutoTicket checkbox
-    document.querySelector("#Memo84").checked = true;
-
     //Customer Number (if known)
     //document.querySelector("#Memo41").value = "000001";
 
