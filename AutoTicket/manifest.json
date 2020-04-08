@@ -9,7 +9,7 @@
   "permissions": [
     "storage",
     "activeTab",
-    "https://api2.sprinklr.com/"
+    "https://api2.sprinklr.com/*"
   ],
   "background": {
     "scripts": [
