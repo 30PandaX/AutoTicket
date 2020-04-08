@@ -142,13 +142,12 @@ function autofill() {
   dateOfReplyField.value = replyDateString;
   dateOfReplyField.readOnly = true;
 
-  if (msgInfo.hasOwnProperty('enrichments')){
-    if (msgInfo.enrichments.hasOwnProperty('sentiment')){
-      //Tonality
-      // document.querySelector("#Memo64").value = intToSentiment(msgInfo.enrichments.sentiment);
-      // Editing the extension to exclude tonality -- Katy
-    }
-  }
+  //Tonality
+  // if (msgInfo.hasOwnProperty('enrichments')){
+  //   if (msgInfo.enrichments.hasOwnProperty('sentiment')){
+  //     document.querySelector("#Memo64").value = intToSentiment(msgInfo.enrichments.sentiment);
+  //   }
+  // }
 
   //Social Media Channel
   document.querySelector("#Memo34").value = formatChannelName(msgInfo.channelType, msgInfo.permalink);
