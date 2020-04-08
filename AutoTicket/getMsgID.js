@@ -2,7 +2,8 @@
 
 function getID() {
   //get the message ID from the current page
-  let messageID = document.querySelector(".messageId.flex-row-container").querySelector('[role="presentation"]').innerHTML;
+  let str = document.getElementsByClassName("_1w_y").innerHTML;
+  let messageID = str.substring(30, str.length);
   //send the message ID to background.js
   chrome.runtime.sendMessage(messageID);
 }
