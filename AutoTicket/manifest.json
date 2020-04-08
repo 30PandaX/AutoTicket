@@ -8,12 +8,14 @@
   "description": "Fills in fields of an Elementool ticket using data from Sprinklr",
   "permissions": [
     "storage",
-    "tabs",
-    "<all_urls>"
+    "activeTab",
+    "https://api2.sprinklr.com/"
   ],
   "background": {
-  "scripts": ["background.js"],
-  "persistent": false
+    "scripts": [
+      "background.js"
+    ],
+    "persistent": false
   },
   "manifest_version": 2,
   "commands": {
@@ -32,8 +34,9 @@
       "description": "Fill in multiple fields of an Elementool ticket"
     }
   },
-  "icons": { "16": "icon16.png",
-           "48": "icon48.png",
-          "128": "icon128.png"
+  "icons": {
+    "16": "icon16.png",
+    "48": "icon48.png",
+    "128": "icon128.png"
   }
 }

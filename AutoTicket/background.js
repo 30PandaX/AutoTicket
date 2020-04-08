@@ -17,7 +17,7 @@ async function apiCall(msgID) {
   var msgResponse = await fetch('https://api2.sprinklr.com/api/v2/message?sourceType=ACCOUNT&id='+msgID, config);
   var msgInfo = await msgResponse.json();
 
-  if (msgInfo.hasOwnProperty('errors')) {
+  if (msgInfo.errors.length > 0) {
     if (msgInfo.errors[0].code == 404) {
       msgResponse = await fetch('https://api2.sprinklr.com/api/v2/message?sourceType=LISTENING&id='+msgID, config);
       msgInfo = await msgResponse.json();
@@ -51,7 +51,7 @@ chrome.commands.onCommand.addListener(function(command) {
         chrome.tabs.executeScript(tab[0].id, {file: 'getMsgID.js'});
       } else {
         //TODO: Should we display an alert, or would it be better to not do anything?
-        alert("This command (Alt+C) only works in Sprinklr");
+        alert("AutoTicket Copy (Alt+C) only works in Sprinklr");
       }
     });
   } else if (command == "pasteToElementool") {
@@ -64,7 +64,7 @@ chrome.commands.onCommand.addListener(function(command) {
         chrome.tabs.executeScript(tab[0].id, {file: 'paste.js'});
       } else {
         //TODO: Should we display an alert, or would it be better to not do anything?
-        alert("This command (Alt+V) only works in Elementool");
+        alert("AutoTicket Paste (Alt+V) only works in Elementool");
       }
     });
   }

@@ -9,6 +9,7 @@ AutoTicket is a chrome extension that ease the process to copy customer conversa
 |-----------------|-------------------------|-----------------------------------------------|
 | **base branch** | **version 2**           | 1. get MessageID in "Agent Console" view      |
 |                 |                         | 2. fetch message by MessagID                  |
+| publication     | reduced_permission      | fixes on permissions to publish to Google     |
 
 ## File Description
 | Filename                            | Description                                                               |
