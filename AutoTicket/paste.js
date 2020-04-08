@@ -166,13 +166,13 @@ function autofill() {
             //     }
             //   }
             }
-            //Interaction Location
-            document.querySelector("#Memo71").value = findLocation(msgInfo.channelType, msgInfo.permalink, visibility);
           }
         }
+        //Interaction Location
+        document.querySelector("#Memo71").value = findLocation(msgInfo.channelType, msgInfo.permalink, visibility);
       } else {
         //Interaction Location
-        document.querySelector("#Memo71").value = findLocation(msgInfo.channelType, "", "Private");
+        document.querySelector("#Memo71").value = findLocation(msgInfo.channelType, "", visibility);
       }
 
     //Customer Number (if known)
