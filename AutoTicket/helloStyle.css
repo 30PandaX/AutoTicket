@@ -1,17 +1,25 @@
 body {
   width: 400px;
-  background-color: #FFFFFF;
-  color: Black;
+  background-color: #015293;
+  color: White;
   text-align: center;
+  margin-left: 0px;
+  margin-right: 0px;
 }
 
 .outer {
   margin: 10px;
-  border: 2px solid Black;
+  border: 5px solid White;
   border-radius: 10px;
+}
+
+a {
+  color: White;
 }
 
 ol {
   text-align: left;
   font-weight: bold;
+  padding-inline-start: 40px;
+  padding-inline-end: 40px;
 }
