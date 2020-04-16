@@ -1,15 +1,42 @@
-# AutoTicket
+
+
+# Introduction
 AutoTicket is a chrome extension that ease the process to copy customer conversations from Sprinklr and paste to Elementool.
 
-## How to use AutoTicket
-<a href="https://github.umn.edu/sleepnumber4950/AutoTicket/blob/version2/User%20Instructions.pdf">User Guide</a>
+### Table of Content
+- [Installation Guide](#Installation)
+- [Commands](#Commands)
+- [Permissions](#Permissions)
+- [Developer Guide](#Develoepr-Guide)
+  - [Branch Description](#Branch-Description)
+  - [File Description](#File-Description)
+  - [Map of Ticket Content](#Map-of-Ticket-Content)
 
+# Installation & Update
+Visit the [AutoTicket chrome extension page] to install.
+Extensions are updated by Chrome without user intervention.
+
+> More Details on [How to install and manage extensions].
+
+# Commands
+AutoTicket requires Sprinklr or Elementool being active when user invoke the following keystrokes to perform corresponding actions.
+
+* `Alt + c` - copy from Sprinklr
+* `Alt + v` - paste to Elementool
+
+# Permissions
+AutoTicket requires the following:
+
+* **Read and write to local storage**: required for temporarily storing data between coping and pasting
+* **Access to activeTab**: required for accessing case info on Sprinklr and pasting data on Elementool
+* **[Sprinklr API Call]<sup>5</sup>**: required for gather required data to fill ticket
+
+# Developer Guide
 ## Branch Description
 | Status          | Branch                  | Description                                   |
 |-----------------|-------------------------|-----------------------------------------------|
 | **base branch** | **version 2**           | 1. get MessageID in "Agent Console" view      |
 |                 |                         | 2. fetch message by MessagID                  |
-| publication     | reduced_permission      | fixes on permissions to publish to Google     |
 
 ## File Description
 | Filename                            | Description                                                               |
@@ -25,33 +52,33 @@ AutoTicket is a chrome extension that ease the process to copy customer conversa
 | hello.html, helloStyle.css          | floating prompt when hover above extension icon                           |
 | icon16.png, icon48.png, icon128.png | chrome extension icon in different resolution                             |
 
-## [Sprinklr API Call] <sup>5
-| Elementool Table Entry           | Query Selector      |     | API Response JSON Value <sup>1                                             | AutoTicket Behavior | Remark                                     |
-| -------------------------------- | ------------------- | --- | -------------------------------------------------------------------------- | ------------------- | ------------------------------------------ |
-| Tonality                         | #Memo64             |     | `data.enrichments.sentiment`                                               | Leave empty         | Excluded because Sprinklr's tonality sucks |
-| Follow Up                        |                     |     | /                                                                          | Leave Empty         | What is "follow up"?                       |
-| Issue                            |                     |     | /                                                                          | Leave Empty         | Unable to determine without ML             |
-| Social Media Channel             | #Memo34             |     | `data.channelType`                                                         | Fill <sup>2         |                                            |
-|                                  |                     |     | `data.permalink`                                                           |                     |                                            |
-| Interaction Location             | #Memo71             |     | `data.channelType`                                                         | Fill <sup>3         |                                            |
-|                                  |                     |     | `data.permalink`                                                           |                     |                                            |
-|                                  |                     |     | `data.permalink.workflow.customProperties ["5c490fd3e4b0afd92c3e6a7a"][0]` |                     | `messageType`                              |
-| Customer Name                    | #Memo42             |     | `data.senderProfile.username`                                              | Fill                |                                            |
-| Customer Number                  | #Memo41             |     | /                                                                          | Leave Empty         |                                            |
-| Customer's Post                  | #steps_to_reproduce |     | `data.content.text`                                                        | Fill <sup>4         |                                            |
-|                                  |                     |     | `data.textEntities.message[0]`                                             |                     |                                            |
-| Sleep Number's Response          |                     |     | /                                                                          | Leave Empty         |                                            |
-| Additional Details               |                     |     | /                                                                          | Leave Empty         |                                            |
-| Link to Interaction              | #Right40            |     | /                                                                          | Leave Empty         |                                            |
-| Reported By                      |                     |     | /                                                                          | Do Not Change       | Filled by Elementool                       |
-| Date of Customer Post            | #Left36             |     | `data.createdTime`                                                         | Fill                |                                            |
-| Time of Customer Post            | #igtxtLeft37        |     | Same As Above                                                              | Fill                |                                            |
-| Time of Customer Post AM/PM      | #Left37_ampm        |     | Same As Above                                                              | Fill                |                                            |
-| Date of Sleep Number Reply       | #Left38             |     | /                                                                          | Fill                | Current System Time                        |
-| Time of Sleep Number Reply       |                     |     | /                                                                          | Leave Empty         |                                            |
-| Time of Sleep Number Reply AM/PM |                     |     | /                                                                          | Leave Empty         |                                            |
+## Map of Ticket Content
+| Elementool Table Entry           | Query Selector      |     | API Response JSON Value <sup>1                                             | AutoTicket Behavior | Remark                                       |
+| -------------------------------- | ------------------- | --- | -------------------------------------------------------------------------- | ------------------- | -------------------------------------------- |
+| Tonality                         | #Memo64             |     | `data.enrichments.sentiment`                                               | Leave empty         | Commented because Sprinklr's tonality sucks  |
+| Follow Up                        |                     |     | /                                                                          | Leave Empty         | What is "follow up"?                         |
+| Issue                            |                     |     | /                                                                          | Leave Empty         | Unable to determine without Machine Learning |
+| Social Media Channel             | #Memo34             |     | `data.channelType`                                                         | Fill <sup>2         |                                              |
+|                                  |                     |     | `data.permalink`                                                           |                     |                                              |
+| Interaction Location             | #Memo71             |     | `data.channelType`                                                         | Fill <sup>3         |                                              |
+|                                  |                     |     | `data.permalink`                                                           |                     |                                              |
+|                                  |                     |     | `data.permalink.workflow.customProperties ["5c490fd3e4b0afd92c3e6a7a"][0]` |                     | `messageType`                                |
+| Customer Name                    | #Memo42             |     | `data.senderProfile.username`                                              | Fill                |                                              |
+| Customer Number                  | #Memo41             |     | /                                                                          | Leave Empty         |                                              |
+| Customer's Post                  | #steps_to_reproduce |     | `data.content.text`                                                        | Fill <sup>4         |                                              |
+|                                  |                     |     | `data.textEntities.message[0]`                                             |                     |                                              |
+| Sleep Number's Response          |                     |     | /                                                                          | Leave Empty         |                                              |
+| Additional Details               |                     |     | /                                                                          | Leave Empty         |                                              |
+| Link to Interaction              | #Right40            |     | /                                                                          | Leave Empty         |                                              |
+| Reported By                      |                     |     | /                                                                          | Do Not Change       | Filled by Elementool                         |
+| Date of Customer Post            | #Left36             |     | `data.createdTime`                                                         | Fill                |                                              |
+| Time of Customer Post            | #igtxtLeft37        |     | Same As Above                                                              | Fill                |                                              |
+| Time of Customer Post AM/PM      | #Left37_ampm        |     | Same As Above                                                              | Fill                |                                              |
+| Date of Sleep Number Reply       | #Left38             |     | /                                                                          | Fill                | Current System Time                          |
+| Time of Sleep Number Reply       |                     |     | /                                                                          | Leave Empty         |                                              |
+| Time of Sleep Number Reply AM/PM |                     |     | /                                                                          | Leave Empty         |                                              |
 
-
+#### Footnote
 1: `data` = `response.json().data`
 
 2: How to determine Social Media Channel
@@ -76,13 +103,13 @@ AutoTicket is a chrome extension that ease the process to copy customer conversa
 
 4: Changes on Customer's Post
 
-| IF                                                              | THEN                               | Remark |
-| --------------------------------------------------------------- | ---------------------------------- | ------ |
-| hyperlink starts with "#" or "@"                                | keep original                      |        |
-| hyperlink that has `msgInfo.textEntities.message[i].url`        | show url                           |        |
-| hyperlink that has `msgInfo.textEntities.message[i].screenName` | show screenName                    |        |
-| from YouTube                                                    | add "***YOUTUBE COMMENT***" before |        |
-| Others                                                          | replace with "REDACTED"            | Email  |
+| IF                                                              | THEN                                  | Remark |
+| --------------------------------------------------------------- | ------------------------------------- | ------ |
+| hyperlink starts with "#" or "@"                                | keep original                         |        |
+| hyperlink that has `msgInfo.textEntities.message[i].url`        | show url                              |        |
+| hyperlink that has `msgInfo.textEntities.message[i].screenName` | show screenName                       |        |
+| `channelType` is  YouTube                                       | add "\*\*\*YOUTUBE COMMENT***" before |        |
+| Others                                                          | replace with "REDACTED"               | Email  |
 
 5: Assumptions made on what's inside API Response json
 
@@ -98,3 +125,5 @@ AutoTicket is a chrome extension that ease the process to copy customer conversa
 | `data.createdTime`             | Always present                                                               | No                                       |
 
 [Sprinklr API Call]: https://developer.sprinklr.com/docs/read/api_20/messages_api_20/Fetch_Message_by_ID_and_Source_Type
+[AutoTicket chrome extension page]: https://chrome.google.com/webstore/detail/autoticket/gbijbmobpffbljlndmckfafkmkdacdcn
+[How to install and manage extensions]: https://support.google.com/chrome_webstore/answer/2664769?hl=en
