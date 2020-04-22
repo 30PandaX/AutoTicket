@@ -170,8 +170,8 @@ function autofill() {
         //Interaction Location
         document.querySelector("#Memo71").value = findLocation(msgInfo.channelType, msgInfo.permalink, visibility);
       } else {
-        //Interaction Location
-        document.querySelector("#Memo71").value = findLocation(msgInfo.channelType, "", visibility);
+        //Interaction Location: no permalink means private
+        document.querySelector("#Memo71").value = findLocation(msgInfo.channelType, "", "Private");
       }
 
     //Customer Number (if known)
