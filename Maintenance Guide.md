@@ -1,12 +1,35 @@
-# How to Create New Access Token
+# Pushing Updates to Chrome Web Store
+
+### Things to update:
+- `token` on line 5 of **background.js**
+- `version` on line 3 of **manifest.json**
+> Increment the version number so that Chrome detects there's an update.
+
+### Steps:
+1. You need AutoTicket source code. If you don't have one, you can download from GitHub.
+2. Open **background.js** with Notepad
+3. Request a new token, [details.](#Requesting-New-Access-Token)
+4. Replace the token. Note: please make sure you didn't leave extra empty space or delete the quotation marks.
+5. Open **manifest.json** with Notepad
+6. Increment the version number. *Example: change 1.2.1 to 1.2.2*
+7. Save both files.
+8. Go to https://chrome.google.com/webstore/devconsole/
+9. (I will have to ask Panda how to update this.)
+
+
+# Requesting New Access Token
 ## WARNING: New Access Token will make old token INVALID!!
 
 ### Access Token Generation (Step 1/2)
 1. Open a browser
 2. Go to this address
 https://api2.sprinklr.com/oauth/authorize?client_id=byt9mu7ugfau3qyarkc6mwzp&response_type=code&redirect_uri=https://www.sleepnumber.com/
-3. Login and give access
+3. Login to Sprinklr and give access
 4. You will be redirected to SleepNumber's site, the address will contain code we need for step 2.
+
+sample redirected address: https://www.sleepnumber.com/?code=5dca0ea7990a74a97cd72&state=null
+
+sample code: 5dca0ea7990a74a97cd72
 
 *This code will expire in 10 minutes.*
 

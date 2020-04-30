@@ -4,7 +4,7 @@
 AutoTicket is a chrome extension that ease the process to copy customer conversations from Sprinklr and paste to Elementool.
 
 ### Table of Content
-- [Installation Guide](#Installation)
+- [Installation & Update](#Installation-&-Update)
 - [Commands](#Commands)
 - [Requirements and Limitations](#Requirements-and-Limitations)
 - [Permissions](#Permissions)
@@ -12,10 +12,17 @@ AutoTicket is a chrome extension that ease the process to copy customer conversa
   - [Branch Description](#Branch-Description)
   - [File Description](#File-Description)
   - [Map of Ticket Content](#Map-of-Ticket-Content)
+  - [Future Development](#Future-Development)
 
 # Installation & Update
 Visit the [AutoTicket chrome extension page] to install.
-Extensions are updated by Chrome without user intervention.
+Extensions are updated by Chrome without user intervention in 3-6 hours.
+
+Users can force Google Chrome to update extensions immediately by performing the following steps:
+1. go to chrome://extensions
+2. turn on developer mode
+3. click the "Update" button that appears and wait for the “Extensions updated” confirmation message in the bottom left corner of the screen
+4. turn off developer mode
 
 > More Details on [How to install and manage extensions].
 
@@ -27,7 +34,7 @@ AutoTicket requires Sprinklr or Elementool webpage being active when user invoke
 
 # Requirements and Limitations
 AutoTicket requires Sprinklr API functionalities which requires:
-- Sprinklr developer account (Username: sleepnumber4950) being active
+- Sprinklr account (Email: randy.vu@sleepnumber.com) and Sprinklr developer account (Username: sleepnumber4950) being active
 - Sprinklr API authentication token being updated every 30 days
 
 AutoTicket requires Google Chrome Extension functionalities which requires:
@@ -100,6 +107,14 @@ AutoTicket requires the following:
 | Time of Sleep Number Reply       |                     |     | /                                                                          | Leave Empty         |                                              |
 | Time of Sleep Number Reply AM/PM |                     |     | /                                                                          | Leave Empty         |                                              |
 
+### Future Development
+* Expand channelType such as LinkedIn (through Sprinklr) and SleepNumber Website reviews
+* Combine multiple un-replied comments into one Elementool tickets
+* True clipboard behavior
+* Remove the required maintenance process by finding permanent token, or eliminating token usage (gather data with querySelector), or finding automated token update process
+* Add machine learning to identify customer's tonality and issue
+
+
 #### Footnote
 1: `data` = `response.json().data`
 
@@ -149,4 +164,4 @@ AutoTicket requires the following:
 [Sprinklr API Call]: https://developer.sprinklr.com/docs/read/api_20/messages_api_20/Fetch_Message_by_ID_and_Source_Type
 [AutoTicket chrome extension page]: https://chrome.google.com/webstore/detail/autoticket/gbijbmobpffbljlndmckfafkmkdacdcn
 [How to install and manage extensions]: https://support.google.com/chrome_webstore/answer/2664769?hl=en
-[maintenance guide]: https://github.com/SleepNumberInc/AutoTicket/blob/version2/maintenance%20Guide.pdf 
+[maintenance guide]: https://github.com/SleepNumberInc/AutoTicket/blob/version2/maintenance%20Guide.pdf
