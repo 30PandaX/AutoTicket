@@ -6,6 +6,7 @@ AutoTicket is a chrome extension that ease the process to copy customer conversa
 ### Table of Content
 - [Installation Guide](#Installation)
 - [Commands](#Commands)
+- [Requirements and Limitations](#Requirements-and-Limitations)
 - [Permissions](#Permissions)
 - [Developer Guide](#Develoepr-Guide)
   - [Branch Description](#Branch-Description)
@@ -19,10 +20,25 @@ Extensions are updated by Chrome without user intervention.
 > More Details on [How to install and manage extensions].
 
 # Commands
-AutoTicket requires Sprinklr or Elementool being active when user invoke the following keystrokes to perform corresponding actions.
+AutoTicket requires Sprinklr or Elementool webpage being active when user invoke the following keystrokes to perform corresponding actions.
 
 * `Alt + c` - copy from Sprinklr
 * `Alt + v` - paste to Elementool
+
+# Requirements and Limitations
+AutoTicket requires Sprinklr API functionalities which requires:
+- Sprinklr developer account (Username: sleepnumber4950) being active
+- Sprinklr API authentication token being updated every 30 days
+
+AutoTicket requires Google Chrome Extension functionalities which requires:
+- Chrome
+- Chrome webstore developer account for manually update API authentication
+> For getting new tokens and pushing updates, checkout the [maintenance guide].
+
+
+AutoTicket is limited by Sprinklr to have at most:
+- 10 copy actions per second
+- 250 copy actions per hour
 
 # Permissions
 AutoTicket requires the following:
@@ -31,28 +47,34 @@ AutoTicket requires the following:
 * **Access to activeTab**: required for accessing case info on Sprinklr and pasting data on Elementool
 * **[Sprinklr API Call]<sup>5</sup>**: required for gather required data to fill ticket
 
+
 # Developer Guide
-## Branch Description
+> For bug fixing and future developement use.
+
+### Branch Description
 | Status          | Branch                  | Description                                   |
 |-----------------|-------------------------|-----------------------------------------------|
 | **base branch** | **version 2**           | 1. get MessageID in "Agent Console" view      |
 |                 |                         | 2. fetch message by MessagID                  |
 
-## File Description
-| Filename                            | Description                                                               |
-| ----------------------------------- | ------------------------------------------------------------------------- |
-| manifest.json                       | chrome extension manifest                                                 |
-| getMsgID.js                         | extract messageID from sprinklr webpage                                   |
-| background.js                       | 1. listen to commands and check if commands are called in the correct tab |
-|                                     | 2. make API call                                                          |
-|                                     | 3. put API response json to storage                                       |
-| paste.js                            | 1. get response json from storage                                         |
-|                                     | 2. find corresponding data in json and fill elementool table              |
-|                                     | 3. delete data from storage                                               |
-| hello.html, helloStyle.css          | floating prompt when hover above extension icon                           |
-| icon16.png, icon48.png, icon128.png | chrome extension icon in different resolution                             |
+### File Description
+| Filename                            | Description                                                                          |
+| ----------------------------------- | ------------------------------------------------------------------------------------ |
+| manifest.json                       | chrome extension manifest                                                            |
+| getMsgID.js                         | extract messageID from sprinklr webpage                                              |
+| background.js                       | 1. listen to commands and check if commands are called in the correct tab            |
+|                                     | 2. make API call                                                                     |
+|                                     | 3. put API response json to storage                                                  |
+| paste.js                            | 1. get response json from storage                                                    |
+|                                     | 2. find corresponding data in json and fill elementool table                         |
+|                                     | 3. delete data from storage                                                          |
+| hello.html, helloStyle.css          | floating prompt when hover above extension icon                                      |
+| icon16.png, icon48.png, icon128.png | chrome extension icon in different resolution                                        |
+| README.md                           | documentation                                                                        |
+| maintenance Guide.md                | guide for developer and maintainer to get new token and push updates (not yet added) |
+| Testing Installation Update Guide   | guide for testing users to install and update chrome extension                       |
 
-## Map of Ticket Content
+### Map of Ticket Content
 | Elementool Table Entry           | Query Selector      |     | API Response JSON Value <sup>1                                             | AutoTicket Behavior | Remark                                       |
 | -------------------------------- | ------------------- | --- | -------------------------------------------------------------------------- | ------------------- | -------------------------------------------- |
 | Tonality                         | #Memo64             |     | `data.enrichments.sentiment`                                               | Leave empty         | Commented because Sprinklr's tonality sucks  |
@@ -127,3 +149,4 @@ AutoTicket requires the following:
 [Sprinklr API Call]: https://developer.sprinklr.com/docs/read/api_20/messages_api_20/Fetch_Message_by_ID_and_Source_Type
 [AutoTicket chrome extension page]: https://chrome.google.com/webstore/detail/autoticket/gbijbmobpffbljlndmckfafkmkdacdcn
 [How to install and manage extensions]: https://support.google.com/chrome_webstore/answer/2664769?hl=en
+[maintenance guide]: https://github.com/SleepNumberInc/AutoTicket/blob/version2/maintenance%20Guide.pdf 
