@@ -40,7 +40,7 @@ AutoTicket requires Sprinklr API functionalities which requires:
 AutoTicket requires Google Chrome Extension functionalities which requires:
 - Chrome
 - Chrome webstore developer account for manually update API authentication
-> For getting new tokens and pushing updates, checkout the [maintenance guide].
+> For getting new tokens and pushing updates, checkout the [maintenance guide] (https://github.com/SleepNumberInc/AutoTicket/blob/version2/Maintenance).
 
 
 AutoTicket is limited by Sprinklr to have at most:
