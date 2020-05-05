@@ -8,8 +8,8 @@
 ### Steps:
 1. Request a new token, [details.](#Requesting-New-Access-Token)
 2. Click here to edit [background.js](https://github.com/SleepNumberInc/AutoTicket/edit/version2/AutoTicket/background.js) file.
-3. In line 5, replace everything between the quote marks with new token you got from step 1. Note: please make sure you didn't leave extra empty space or delete the quotation marks.
-4. Click here to edit [manifest.json](https://github.com/SleepNumberInc/AutoTicket/edit/version2/AutoTicket/manifest.json) file to increment the version number. *Example: change 1.3.1 to 1.3.2*
+3. In line 5, replace everything between the quote marks with new token you got from step 1. Note: please make sure you didn't leave extra empty space or delete the quotation marks. Save it by clicking on the "Commit changes" button.
+4. Click here to edit [manifest.json](https://github.com/SleepNumberInc/AutoTicket/edit/version2/AutoTicket/manifest.json) file to increment the version number. *Example: change 1.3.1 to 1.3.2* Save it by clicking on the "Commit changes" button.
 5. [Download](https://github.com/SleepNumberInc/AutoTicket/archive/version2.zip) and save the source code to your computer. Make sure you already have a zip extractor like [7-Zip] (https://www.7-zip.org/)
 6. Unzip and open the file you just downloaded. In AutoTicket directory, you will see another AutoTicket folder, compress it to a zip file.
 7. Go to https://chrome.google.com/webstore/devconsole/
