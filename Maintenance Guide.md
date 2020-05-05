@@ -12,10 +12,9 @@
 4. Click here to edit [manifest.json](https://github.com/SleepNumberInc/AutoTicket/edit/version2/AutoTicket/manifest.json) file to increment the version number. *Example: change 1.3.1 to 1.3.2* Save it by clicking on the "Commit changes" button.
 5. [Download](https://github.com/SleepNumberInc/AutoTicket/archive/version2.zip) and save the source code to your computer. Make sure you already have a zip extractor like [7-Zip] (https://www.7-zip.org/)
 6. Unzip and open the file you just downloaded. In AutoTicket directory, you will see another AutoTicket folder, compress it to a zip file.
-7. Go to https://chrome.google.com/webstore/devconsole/
-8. Enter the [AutoTicket developer console](https://chrome.google.com/webstore/devconsole/4500094e-8c58-4606-b180-fb1d8343368d/gbijbmobpffbljlndmckfafkmkdacdcn/edit/package).
-9. Click on the "UPDATE NEW PACKAGE" button,  upload the zip file you just created. The Google review process usually takes about 10 minutes.
-10. The new version will reach users' computers automatically in about 3 hours, if you want the latest version immediately, [open the developer mode](chrome://extensions/) and click on the update button.
+7. Enter the [AutoTicket developer console](https://chrome.google.com/webstore/devconsole/4500094e-8c58-4606-b180-fb1d8343368d/gbijbmobpffbljlndmckfafkmkdacdcn/edit/package).
+8. Click on the "UPDATE NEW PACKAGE" button,  upload the zip file you just created. The Google review process usually takes about 10 minutes.
+9. The new version will reach users' computers automatically in about 3 hours, if you want the latest version immediately, [open the developer mode](chrome://extensions/) and click on the update button.
 
 
 # Requesting New Access Token
