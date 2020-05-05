@@ -24,6 +24,8 @@ async function apiCall(msgID) {
     }
   }
 
+  console.log(msgInfo);
+
   chrome.storage.local.set({MsgData: msgInfo}, function() {
     console.log("Stored msgInfo JSON.");
   });
