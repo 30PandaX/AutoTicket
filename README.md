@@ -164,4 +164,4 @@ AutoTicket requires the following:
 [Sprinklr API Call]: https://developer.sprinklr.com/docs/read/api_20/messages_api_20/Fetch_Message_by_ID_and_Source_Type
 [AutoTicket chrome extension page]: https://chrome.google.com/webstore/detail/autoticket/gbijbmobpffbljlndmckfafkmkdacdcn
 [How to install and manage extensions]: https://support.google.com/chrome_webstore/answer/2664769?hl=en
-[maintenance guide]: https://github.com/SleepNumberInc/AutoTicket/blob/version2/maintenance%20Guide.md
+[maintenance guide]: https://github.com/SleepNumberInc/AutoTicket/blob/version2/Maintenance%20Guide.md
