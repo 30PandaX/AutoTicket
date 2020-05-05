@@ -6,15 +6,16 @@
 > Increment the version number so that Chrome detects there's an update.
 
 ### Steps:
-1. You need AutoTicket source code. If you don't have one, you can download from GitHub.
-2. Open **background.js** with Notepad
-3. Request a new token, [details.](#Requesting-New-Access-Token)
-4. Replace the token. Note: please make sure you didn't leave extra empty space or delete the quotation marks.
-5. Open **manifest.json** with Notepad
-6. Increment the version number. *Example: change 1.2.1 to 1.2.2*
-7. Save both files.
-8. Go to https://chrome.google.com/webstore/devconsole/
-9. (I will have to ask Panda how to update this.)
+1. Request a new token, [details.](#Requesting-New-Access-Token)
+2. Click here to edit [background.js](https://github.com/SleepNumberInc/AutoTicket/edit/version2/AutoTicket/background.js) file.
+3. In line 5, replace everything between the quote marks. Note: please make sure you didn't leave extra empty space or delete the quotation marks.
+4. Click here to edit [manifest.json](https://github.com/SleepNumberInc/AutoTicket/edit/version2/AutoTicket/manifest.json) file to increment the version number. *Example: change 1.3.1 to 1.3.2*
+5. [Download](https://github.com/SleepNumberInc/AutoTicket/archive/version2.zip) and save the source code to your computer. Make sure you already have a zip extractor like [7-Zip] (https://www.7-zip.org/)
+6. Unzip and open the file you just downloaded. In AutoTicket directory, you will see another AutoTicket folder, compress it to a zip file.
+7. Go to https://chrome.google.com/webstore/devconsole/
+8. Enter the [AutoTicket developer console](https://chrome.google.com/webstore/devconsole/4500094e-8c58-4606-b180-fb1d8343368d/gbijbmobpffbljlndmckfafkmkdacdcn/edit/package).
+9. Click on the "UPDATE NEW PACKAGE" button,  upload the zip file you just created. The Google review process usually takes about 10 minutes.
+10. The new version will reach users' computers automatically in about 3 hours, if you want the latest version immediately, [open the developer mode](chrome://extensions/) and click on the update button.
 
 
 # Requesting New Access Token
